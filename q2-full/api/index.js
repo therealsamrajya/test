@@ -24,7 +24,11 @@ const items = [
 app.use(cors({
     origin: [
         'https://frontend-cvt8.onrender.com',
+<<<<<<< HEAD
         'http://localhost:5174' 
+=======
+        'http://localhost:5174' 
+>>>>>>> a9bf9957a561f1cde0a9c62e6f428866b278fbce
     ],
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
