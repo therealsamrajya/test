@@ -22,9 +22,12 @@ const items = [
 ];
 
 app.use(cors({
-     origin: 'https://frontend-cvt8.onrender.com',
-    methods: ['GET', 'POST'], 
-    allowedHeaders: ['Content-Type'] 
+    origin: [
+        'https://frontend-cvt8.onrender.com',
+        'http://localhost:5174' 
+    ],
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type']
 }));
 app.use(express.json());
 
