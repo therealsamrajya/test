@@ -21,7 +21,7 @@ const SearchFilter = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/items');
+            const response = await axios.get('https://q2-backend.onrender.com/items');
             setItems(response.data);
             setFilteredItems(response.data);
         } catch (err) {
