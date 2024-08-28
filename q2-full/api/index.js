@@ -22,7 +22,7 @@ const items = [
 ];
 
 app.use(cors({
-    origin: 'http://localhost:5173', 
+     origin: 'https://frontend-cvt8.onrender.com',
     methods: ['GET', 'POST'], 
     allowedHeaders: ['Content-Type'] 
 }));
