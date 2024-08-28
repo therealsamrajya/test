@@ -1,0 +1,29 @@
+chain bhhaneko chai seq of number where each number is exactly greater by 1 than its previous value the sequence can occur in any  numbeer
+
+inputed array lai set ma convert garni to decrease the time complexity allows us to easily check if a number exists in the array without having to scan through the entire array each time.
+
+has checks ki tyo item array ma xa ki xaina
+
+(num-1) ley check garxa if it is the start of array 
+
+if it is true it  sets the number as the currrent number  and chain as 1 
+ani feri check garni while loop use garera testai arko number xa ki nai bhanera 
+cha bhaney  increase the counter by 1 and  currentNum is incremented 
+continue the loop jabasamma seq ma airakaxa
+
+eg: [100,1,2,3]
+suru ma num ko value 100 
+num.set(100-1)= 99 not in array 
+so it is the starting of sequence
+chain is 1 as there is no 101 
+ 
+iterate to 2nd num
+num.set(1-1)=0
+no 0 , so 1 is starting of seq
+while ley check gardai janxa ani puaxa 2,3, sab xa ani math.max ley initalize garxa  
+
+
+time complexity = 
+o(n) for converting n array to n sets
+main loop iterates through every element once that is o(n)
+For each number, we might potentially check all consecutive numbers, but across all iterations, we will at most check each number once.

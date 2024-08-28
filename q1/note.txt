@@ -1,0 +1,8 @@
+using usestate to take and store users input 
+
+euta array lini predefined item haru sanga sort garna
+
+filter garni banako array lai ani each item lai lowercase maa convert garni for making them case sensitive
+ ani jun hamro user ko input hunxa teslai pani lowecase ma convert garni jasko karan compare garna milos 
+ includes halni to check if there is such item in array or not
+
