@@ -9,12 +9,12 @@ jest.mock('axios');
 
 describe('SearchFilter Component', () => {
     beforeEach(() => {
-        jest.useFakeTimers(); // Ensure fake timers are enabled
+        jest.useFakeTimers(); 
     });
 
     afterEach(() => {
-        jest.runOnlyPendingTimers(); // Clear any pending timers
-        jest.useRealTimers(); // Restore real timers
+        jest.runOnlyPendingTimers(); 
+        jest.useRealTimers();
     });
 
     test('renders correctly when data is fetched successfully', async () => {
@@ -55,7 +55,7 @@ describe('SearchFilter Component', () => {
         });
 
         userEvent.type(screen.getByPlaceholderText(/Search for a month.../i), 'Bai');
-        jest.runAllTimers(); // Ensure debounce function has run
+        jest.runAllTimers(); 
 
         await waitFor(() => {
             expect(screen.getByText('Baisakh')).toBeInTheDocument();

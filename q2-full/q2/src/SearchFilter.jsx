@@ -61,7 +61,7 @@ const SearchFilter = () => {
                 setFilteredItems(filtered);
                 setShowSuccess(filtered.length > 0);
                 setTimeout(() => setShowSuccess(false), 3000); 
-            }, 300); // 300ms debounce delay
+            }, 300); 
 
             setDebounceTimeout(newTimeout);
         },
