@@ -24,7 +24,8 @@ const items = [
 app.use(cors({
     origin: [
         'https://frontend-cvt8.onrender.com',
-         'http://localhost:5174'
+    'http://localhost:5174'
+
     ],
 
     methods: ['GET', 'POST'],
