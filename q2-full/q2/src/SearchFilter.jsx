@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
-// Custom CSS animations
 const customAnimations = `
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -32,8 +31,8 @@ const SearchFilter = () => {
     const [filteredItems, setFilteredItems] = useState([]);
     const [error, setError] = useState(null);
     const [showSuccess, setShowSuccess] = useState(false);
+    const [debounceTimeout, setDebounceTimeout] = useState(null);
 
-    // Fetch data from the API
     const fetchData = async () => {
         try {
             const response = await axios.get('https://q2-backend.onrender.com/items');
@@ -51,25 +50,30 @@ const SearchFilter = () => {
     // Debounce function for filtering
     const debouncedFilter = useCallback(
         (query) => {
-            const lowerCaseQuery = query.toLowerCase();
-            const filtered = items.filter(item =>
-                item.toLowerCase().includes(lowerCaseQuery)
-            );
-            setFilteredItems(filtered);
-            setShowSuccess(filtered.length > 0);
-            setTimeout(() => setShowSuccess(false), 3000); // Hide success message after 3 seconds
+            if (debounceTimeout) {
+                clearTimeout(debounceTimeout);
+            }
+            const newTimeout = setTimeout(() => {
+                const lowerCaseQuery = query.toLowerCase();
+                const filtered = items.filter(item =>
+                    item.toLowerCase().includes(lowerCaseQuery)
+                );
+                setFilteredItems(filtered);
+                setShowSuccess(filtered.length > 0);
+                setTimeout(() => setShowSuccess(false), 3000); 
+            }, 300); // 300ms debounce delay
+
+            setDebounceTimeout(newTimeout);
         },
-        [items]
+        [items, debounceTimeout]
     );
 
-    // Handle search input changes
     const handleSearchChange = (event) => {
         const query = event.target.value;
         setSearch(query);
         debouncedFilter(query);
     };
 
-    // Inject custom animations into the DOM
     useEffect(() => {
         const style = document.createElement('style');
         style.innerHTML = customAnimations;
