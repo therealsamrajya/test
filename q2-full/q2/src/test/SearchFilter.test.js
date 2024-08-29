@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
-import SearchFilter from './SearchFilter';
+import SearchFilter from '../components/SearchFilter';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 

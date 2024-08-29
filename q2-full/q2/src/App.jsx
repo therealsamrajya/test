@@ -1,12 +1,13 @@
 
 import './App.css'
-import SearchFilter from './SearchFilter'
+import Home from './pages/home/Home'
+
 
 function App() {
 
   return (
     <>
-    <SearchFilter/>
+    <Home/>
       
     
     </>
