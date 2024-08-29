@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import Image from 'next/image';
 
 export default function DashboardPage() {
   const [username, setUsername] = useState("");
@@ -8,11 +9,7 @@ export default function DashboardPage() {
   const [stats, setStats] = useState({ posts: 0, followers: 0, following: 0 });
   const router = useRouter();
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
-  const fetchUser = async () => {
+  const fetchUser = useCallback(async () => {
     try {
       const response = await fetch("/api/user");
       if (response.ok) {
@@ -35,7 +32,11 @@ export default function DashboardPage() {
       setError("An error occurred while fetching user data");
       router.push("/login");
     }
-  };
+  }, [router]);
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
 
   const handleLogout = async () => {
     try {
@@ -68,10 +69,12 @@ export default function DashboardPage() {
         {username ? (
           <div className="px-4 py-5 sm:p-6">
             <div className="text-center mb-8">
-              <img
+              <Image
                 className="mx-auto h-24 w-24 rounded-full border-4 border-white shadow-lg"
                 src={`https://api.dicebear.com/6.x/initials/svg?seed=${username}`}
                 alt="Profile"
+                width={96}
+                height={96}
               />
               <h2 className="mt-4 text-xl font-semibold text-gray-900">
                 Welcome, {username}!
